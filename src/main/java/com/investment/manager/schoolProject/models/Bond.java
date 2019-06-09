@@ -85,7 +85,7 @@ public class Bond  implements RandomHistory {
         double historyStartingPoint = initialPrice;
         history[0] = historyStartingPoint;
         for (int i = 1; i < history.length; i++) {
-            history[i] = history[i-1]*1.002;
+            history[i] = Math.round(history[i-1]*Math.pow(1.002, i));
         }
     }
 }

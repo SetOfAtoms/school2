@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new bond</title>
+</head>
+<body>
+<h1>Add new bond to the portfolio</h1>
+<div>
+    <form th:object="${bond}" th:action="@{savebond}" action="#" method="post">
+        <label for="initialPrice">Initial price</label>
+        <input type="number" id="initialPrice" th:field="*{initialPrice}" />
+        <label for="issuer">Issuer</label>
+        <input type="text" id="issuer" th:field="*{issuer}" />
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+</body>
+</html>
