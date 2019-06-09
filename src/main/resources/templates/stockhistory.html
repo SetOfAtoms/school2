@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var price0 = /*[[${stock.history[0]}]]*/ 'default';
+    var price1 = /*[[${stock.history[1]}]]*/ 'default';
+    var price2 = /*[[${stock.history[2]}]]*/ 'default';
+    var price3 = /*[[${stock.history[3]}]]*/ 'default';
+    var price4 = /*[[${stock.history[4]}]]*/ 'default';
+    var price5 = /*[[${stock.history[5]}]]*/ 'default';
+    var price6 = /*[[${stock.history[6]}]]*/ 'default';
+    var price7 = /*[[${stock.history[7]}]]*/ 'default';
+    var price8 = /*[[${stock.history[8]}]]*/ 'default';
+    var price9 = /*[[${stock.history[9]}]]*/ 'default';
+    var price10 = /*[[${stock.history[10]}]]*/ 'default';
+    var price11= /*[[${stock.history[11]}]]*/ 'default';
+    var price12 = /*[[${stock.history[12]}]]*/ 'default';
+    var price13 = /*[[${stock.history[13]}]]*/ 'default';
+    var price14 = /*[[${stock.history[14]}]]*/ 'default';
+    var price15 = /*[[${stock.history[15]}]]*/ 'default';
+    var price16 = /*[[${stock.history[16]}]]*/ 'default';
+    var price17 = /*[[${stock.history[17]}]]*/ 'default';
+    var price18 = /*[[${stock.history[18]}]]*/ 'default';
+    var price19 = /*[[${stock.history[19]}]]*/ 'default';
+
+/*]]>*/
+        google.charts.load('44', {
+  callback: drawBackgroundColor,
+  packages: ['corechart']
+});
+
+function drawBackgroundColor() {
+  var c = [
+    [new Date('3/16/2016'), price0],
+    [new Date('3/17/2016'), price1],
+    [new Date('3/18/2016'), price2],
+    [new Date('3/19/2016'), price3],
+    [new Date('3/20/2016'), price4],
+    [new Date('3/21/2016'), price5],
+    [new Date('3/22/2016'), price6],
+    [new Date('3/23/2016'), price7],
+    [new Date('3/24/2016'), price8],
+    [new Date('3/25/2016'), price9],
+    [new Date('3/26/2016'), price10],
+    [new Date('3/27/2016'), price11],
+    [new Date('3/28/2016'), price12],
+    [new Date('3/29/2016'), price13],
+    [new Date('3/30/2016'), price14],
+    [new Date('3/31/2016'), price15],
+    [new Date('4/1/2016'), price16],
+    [new Date('4/2/2016'), price17],
+    [new Date('4/3/2016'), price18],
+    [new Date('4/4/2016'), price19],
+  ];
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'Date');
+  data.addColumn('number', 'Price');
+
+  data.addRows(c);
+
+  var options = {
+
+    backgroundColor: '#f0f2f4'
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('chart'));
+  chart.draw(data, options);
+}
+    </script>
+</head>
+<body>
+<h1><td th:text="${ticker}"></td></h1>
+<div id="chart"></div>
+
+</body>
+</html>

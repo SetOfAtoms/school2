@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bond History</title>
+
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var price0 = /*[[${bond.history[0]}]]*/ 'default';
+    var price1 = /*[[${bond.history[1]}]]*/ 'default';
+    var price2 = /*[[${bond.history[2]}]]*/ 'default';
+    var price3 = /*[[${bond.history[3]}]]*/ 'default';
+    var price4 = /*[[${bond.history[4]}]]*/ 'default';
+    var price5 = /*[[${bond.history[5]}]]*/ 'default';
+    var price6 = /*[[${bond.history[6]}]]*/ 'default';
+    var price7 = /*[[${bond.history[7]}]]*/ 'default';
+    var price8 = /*[[${bond.history[8]}]]*/ 'default';
+    var price9 = /*[[${bond.history[9]}]]*/ 'default';
+    var price10 = /*[[${bond.history[10]}]]*/ 'default';
+    var price11= /*[[${bond.history[11]}]]*/ 'default';
+    var price12 = /*[[${bond.history[12]}]]*/ 'default';
+    var price13 = /*[[${bond.history[13]}]]*/ 'default';
+    var price14 = /*[[${bond.history[14]}]]*/ 'default';
+    var price15 = /*[[${bond.history[15]}]]*/ 'default';
+    var price16 = /*[[${bond.history[16]}]]*/ 'default';
+    var price17 = /*[[${bond.history[17]}]]*/ 'default';
+    var price18 = /*[[${bond.history[18]}]]*/ 'default';
+    var price19 = /*[[${bond.history[19]}]]*/ 'default';
+
+/*]]>*/
+        google.charts.load('44', {
+  callback: drawBackgroundColor,
+  packages: ['corechart']
+});
+
+function drawBackgroundColor() {
+  var c = [
+    [new Date('12/1/2001'), price0],
+    [new Date('12/1/2002'), price1],
+    [new Date('12/1/2003'), price2],
+    [new Date('12/1/2004'), price3],
+    [new Date('12/1/2005'), price4],
+    [new Date('12/1/2006'), price5],
+    [new Date('12/1/2007'), price6],
+    [new Date('12/1/2008'), price7],
+    [new Date('12/1/2009'), price8],
+    [new Date('12/1/2010'), price9],
+    [new Date('12/1/2011'), price10],
+    [new Date('12/1/2012'), price11],
+    [new Date('12/1/2013'), price12],
+    [new Date('12/1/2014'), price13],
+    [new Date('12/1/2015'), price14],
+    [new Date('12/1/2016'), price15],
+    [new Date('12/1/2017'), price16],
+    [new Date('12/1/2018'), price17],
+    [new Date('12/1/2019'), price18],
+    [new Date('12/1/2020'), price19],
+  ];
+
+  var data = new google.visualization.DataTable();
+  data.addColumn('date', 'Date');
+  data.addColumn('number', 'Price');
+
+  data.addRows(c);
+
+  var options = {
+
+    backgroundColor: '#f0f2f4'
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('chart'));
+  chart.draw(data, options);
+}
+    </script>
+</head>
+<body>
+<h1><td th:text="${bondname}"></td></h1>
+
+<div id="chart"></div>
+
+</body>
+</html>

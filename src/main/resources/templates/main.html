@@ -3,20 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
+
 </head>
 <body>
 <h1>My Portfolio</h1>
-<table class="table table-portfolio">
-    <tr>
-        <th>Price</th>
+<table class="table table-stocks">
+    <tr class = "table names stocks">
+        <th>Initial Price</th>
         <th>Ticker</th>
     </tr>
     <tr th:each = "stock : ${stocks}">
         <td th:text="${stock.price}"></td>
         <td th:text="${stock.ticker}"></td>
-        <!--<td><a th:href="@{/delete/{id}(id=${stock.id})}">Delete</a></td>-->
+        <td><a th:href="@{/delete/stock/{id}(id=${stock.id})}">Delete</a></td>
+        <td><a th:href="@{/history/stock/{id}(id=${stock.id})}">History</a></td>
     </tr>
 
 </table>
+<a href="/add" class="btn btn-primary">Add new stock to the portfolio</a>
+
+<table class="table table-bonds">
+    <tr class = "table names bonds">
+        <th>Initial Price</th>
+        <th>Closing Price</th>
+        <th>Issuer</th>
+    </tr>
+    <tr th:each = "bond : ${bonds}">
+        <td th:text="${bond.initialPrice}"></td>
+        <td th:text="${bond.closingPrice}"></td>
+        <td th:text="${bond.issuer}"></td>
+        <td><a th:href="@{/delete/bond/{id}(id=${bond.id})}">Delete</a></td>
+        <td><a th:href="@{/history/bond/{id}(id=${bond.id})}">History</a></td>
+    </tr>
+
+</table>
+
 </body>
 </html>
