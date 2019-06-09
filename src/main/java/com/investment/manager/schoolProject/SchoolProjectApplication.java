@@ -1,7 +1,13 @@
 package com.investment.manager.schoolProject;
 
+import com.investment.manager.schoolProject.controllers.MainController;
 import com.investment.manager.schoolProject.models.Portfolio;
+import com.investment.manager.schoolProject.models.Stock;
 import com.investment.manager.schoolProject.repositories.AssetsRepository;
+import com.investment.manager.schoolProject.repositories.UserRepository;
+import org.hibernate.Hibernate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,13 +25,8 @@ public class SchoolProjectApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(AssetsRepository repository){
 		return args -> {
-			List<Portfolio> stocks = new ArrayList<>();
-			Portfolio portfolio1 = new Portfolio();
-			Portfolio portfolio2 = new Portfolio();
-			Portfolio portfolio3 = new Portfolio();
-			repository.save(portfolio1);
-			repository.save(portfolio2);
-			repository.save(portfolio3);
+			Stock stock = new Stock(223.2, "AAPL");
+			repository.save(stock);
 		};
 	}
 

@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
 </head>
 <body>
 <h1>My Portfolio</h1>
+<table class="table table-portfolio">
+    <tr>
+        <th>Price</th>
+        <th>Ticker</th>
+    </tr>
+    <tr th:each = "stock : ${stocks}">
+        <td th:text="${stock.price}"></td>
+        <td th:text="${stock.ticker}"></td>
+        <!--<td><a th:href="@{/delete/{id}(id=${stock.id})}">Delete</a></td>-->
+    </tr>
+
+</table>
 </body>
 </html>
