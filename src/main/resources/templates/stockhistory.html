@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>History</title>
-
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 
     <script th:inline="javascript">
     /*<![CDATA[*/
@@ -77,9 +77,9 @@ function drawBackgroundColor() {
 }
     </script>
 </head>
-<body>
-<h1><td th:text="${ticker}"></td></h1>
-<div id="chart"></div>
+<body class="history">
+<h1 class="tickerName"><td th:text="${ticker}"></td></h1>
+<div id="chart" class="chart"></div>
 
 </body>
 </html>

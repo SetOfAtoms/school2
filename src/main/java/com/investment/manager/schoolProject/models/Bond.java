@@ -8,9 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Random;
 
+// bond model that includes initialPrice, closingPrice and a issuer.
+
 @Entity
 public class Bond  implements RandomHistory {
-    public double initialPrice;
+    public double initialPrice = 100;
     public double closingPrice;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -55,6 +57,10 @@ public class Bond  implements RandomHistory {
         this.closingPrice = closingPrice;
         this.issuer = IssuerName;
         generateRandomHistory();
+        try {
+            this.closingPrice = history[19];
+        }catch (Exception ignored){
+        }
     }
 
     public double[] getHistory() {
@@ -84,8 +90,11 @@ public class Bond  implements RandomHistory {
         Random r = new Random();
         double historyStartingPoint = initialPrice;
         history[0] = historyStartingPoint;
+        double rd = Math.abs(r.nextGaussian());
+        int ri = r.nextInt(3);
         for (int i = 1; i < history.length; i++) {
-            history[i] = Math.round(history[i-1]*Math.pow(1.002, i));
+            history[i] = Math.round(history[i - 1] + Math.pow(1.002, i + ri) / rd) + i-ri;
+
         }
     }
 }

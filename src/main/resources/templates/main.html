@@ -1,45 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:td="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Main page</title>
-
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
+<div class="header">
 <h1>My Portfolio</h1>
-<table class="table table-stocks">
-    <tr class = "table names stocks">
-        <th>Initial Price</th>
+<span class="balance">Balance: <b><td th:text ="${balance}"></td></b>€</span>
+</div>
+<div class="stocks">
+    <h2>Stocks</h2>
+
+    <table class="table table-stocks">
+    <tr class = "table names">
+        <th>Initial Price (€)</th>
         <th>Ticker</th>
     </tr>
     <tr th:each = "stock : ${stocks}">
+        <div class="ticker">
         <td th:text="${stock.price}"></td>
         <td th:text="${stock.ticker}"></td>
-        <td><a th:href="@{/delete/stock/{id}(id=${stock.id})}">Delete</a></td>
-        <td><a th:href="@{/history/stock/{id}(id=${stock.id})}">History</a></td>
+        <td><a class="dh" th:href="@{/delete/stock/{id}(id=${stock.id})}">Delete</a></td>
+        <td><a class="dh" th:href="@{/history/stock/{id}(id=${stock.id})}">History</a></td>
+        </div>
     </tr>
 
 </table>
-<a href="/addstock" class="btn btn-primary">Add new stock to the portfolio</a>
+<p class="pstocks">Stocks value: <b><td th:text="${stocksValue}"></td></b>€</p>
+    <button class="button" onclick="location.href='/addstock';">Add new</button>
+</div>
+<div class="bonds">
+    <h2>Bonds</h2>
 
-<table class="table table-bonds">
-    <tr class = "table names bonds">
-        <th>Initial Price</th>
-        <th>Closing Price</th>
+    <table class="table table-bonds">
+    <tr class = "table names">
+        <th>Initial Price (€)</th>
+        <th>Closing Price (€)</th>
         <th>Issuer</th>
     </tr>
     <tr th:each = "bond : ${bonds}">
         <td th:text="${bond.initialPrice}"></td>
         <td th:text="${bond.closingPrice}"></td>
         <td th:text="${bond.issuer}"></td>
-        <td><a th:href="@{/delete/bond/{id}(id=${bond.id})}">Delete</a></td>
-        <td><a th:href="@{/history/bond/{id}(id=${bond.id})}">History</a></td>
+        <td><a class="dh" th:href="@{/delete/bond/{id}(id=${bond.id})}">Delete</a></td>
+        <td><a class="dh" th:href="@{/history/bond/{id}(id=${bond.id})}">History</a></td>
     </tr>
 
 </table>
-<a href="/addbond" class="btn btn-primary">Add new bond to the portfolio</a>
-<a href="/stocks" class="btn btn-primary">Get all stocks in JSON</a>
-<a href="/bonds" class="btn btn-primary">Get all bonds in JSON</a>
 
+<p class="pbonds">Bonds value: <b><td th:text="${bondsValue}"></td></b>€</p>
+    <button class="button" onclick="location.href='/addbond';">Add new</button>
+
+</div>
 </body>
+<div class="JSON">
+    <a href="/stocks" class="btn btn-primary">Get all stocks in JSON</a>
+    <a href="/bonds" class="btn btn-primary">Get all bonds in JSON</a>
+</div>
 </html>

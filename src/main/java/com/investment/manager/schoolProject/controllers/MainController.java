@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,11 +41,25 @@ public class MainController implements ErrorController {
 
     @GetMapping(value="/main")
     public String main(Model model) {
-        model.addAttribute("stocks", repository.findAll());
-        model.addAttribute("stock", repository.findAll().iterator().next());
-        model.addAttribute("bonds", bondRepository.findAll());
+        // incase we have no stocks or bonds
+        try{
+            model.addAttribute("stocks", repository.findAll());
+            model.addAttribute("stock", repository.findAll().iterator().next());
+
+        }catch (Exception ignored){}
+        model.addAttribute("stocksValue", getStockValue());
+        try {
+            model.addAttribute("bonds", bondRepository.findAll());
+        }catch (Exception ignored){}
+        model.addAttribute("bondsValue", getBondValue());
+
+        try {
+            model.addAttribute("balance", getBondValue()+getStockValue());
+        }catch (Exception ignored){}
+
         return "main";
     }
+
 
     // stock
     @RequestMapping(value = "/addstock")
@@ -127,6 +142,8 @@ public class MainController implements ErrorController {
     Optional<Bond> findBondById(@PathVariable("id")Long Id){
         return bondRepository.findById(Id);
     }
+
+
     // ERROR and empty page
     @RequestMapping(value="/")
     public String empty(Model model) {
@@ -143,5 +160,36 @@ public class MainController implements ErrorController {
     @Override
     public String getErrorPath() {
         return PATH;
+    }
+
+    // custom methods
+    private long getStockValue() {
+        long value = 0;
+        try {
+        Iterator iterator = repository.findAll().iterator();
+        for (int i = 0; i < repository.count(); i++) {
+            if(iterator.hasNext()) {
+                Stock stock = (Stock) iterator.next();
+                value += stock.history[19];
+            }
+        }
+        }catch (Exception e){}
+
+        return value;
+    }
+    private long getBondValue() {
+        long value = 0;
+        try {
+            Iterator iterator = bondRepository.findAll().iterator();
+        for (int i = 0; i < bondRepository.count(); i++) {
+            if(iterator.hasNext()) {
+                Bond bond = (Bond) iterator.next();
+                value += bond.history[19];
+            }
+        }
+        }catch (Exception e){}
+
+
+        return value;
     }
 }

@@ -3,27 +3,29 @@
 <head>
     <title>Add student</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link type="text/css" rel="stylesheet" th:href="@{css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{styles.css}">
+
+
 </head>
 <body>
-<div class="container">
-    <h1>Sign-up</h1>
-    <div class="col-md-4">
+<h1 style="position:absolute;top:30%">Sign-up</h1>
+<div class="signupform">
+    <div>
         <form th:object="${signupform}" th:action="@{/saveuser}" action="#" method="post">
             <div>
-                <label> Username :<input type="text" th:field="*{username}" class="form-control"/></label>
-                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
+                <label class="label"> Username:<input type="text" th:field="*{username}" class="form-control"/></label>
+                <p class="alert" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>
             </div>
             <div>
-                <label> Password :<input type="password" th:field="*{password}" class="form-control"/></label>
-                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+                <label class="label"> Password:<input type="password" th:field="*{password}" class="form-control"/></label>
+                <p class="alert" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
             </div>
             <div>
-                <label> Re-type Password: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
-                <p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
+                <label class="label"> Again: <input type="password" th:field="*{passwordCheck}" class="form-control"/></label>
+                <p class="alert" th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>
             </div>
 
-            <input type="submit" class="btn btn-primary" value="Signup"/>
+            <input type="submit" class="button2" value="Sign up"/>
         </form>
     </div>
 </div>

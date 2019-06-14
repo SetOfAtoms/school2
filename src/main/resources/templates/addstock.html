@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Add new stock</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+
 </head>
 <body>
 <h1>Add new stock to the portfolio</h1>
-<div>
+    <div class="addnews">
+
     <form th:object="${stock}" th:action="@{savestock}" action="#" method="post">
         <label for="price">Initial price</label>
         <input type="number" id="price" th:field="*{price}" />
         <label for="ticker">Ticker</label>
         <input type="text" id="ticker" th:field="*{ticker}" />
-        <input type="submit" value="Save"/>
+        <input type="submit" value="Save" class="button2"/>
     </form>
 </div>
+<p style="position:absolute;top:25%;font-size:16px;color:#212121;">Ticker should have 2-5 letters</p>
 </body>
 </html>

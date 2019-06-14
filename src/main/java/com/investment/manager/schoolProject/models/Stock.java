@@ -2,12 +2,14 @@ package com.investment.manager.schoolProject.models;
 
 import com.investment.manager.schoolProject.domain.RandomHistory;
 
-import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Random;
+
+// stock model that includes price and a ticker.
+
 
 @Entity
 public class Stock implements RandomHistory {
@@ -27,7 +29,7 @@ public class Stock implements RandomHistory {
         this.id = id;
     }
 
-    public double price;
+    public double price = 0;
 
     public String getTicker() {
         return ticker;
@@ -65,82 +67,3 @@ public class Stock implements RandomHistory {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-
-package com.investment.manager.schoolProject.models;
-
-import javax.persistence.*;
-
-@Entity
-public class Stock {
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Long getId() {
-        return id;
-    }
-    public void setId() {
-        this.id = id;
-    }
-
-    public double price;
-
-    public String getTicker() {
-        return ticker;
-    }
-
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
-    }
-
-    public String ticker;
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    public Long id;
-
-
-    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn (name="stock",referencedColumnName="id",nullable = false,unique=true)
-    public Portfolio portfolio;
-
-//    public Portfolio getPortfolio(){
-//        return portfolio;
-//    }
-//    public void setPortfolio(Portfolio portfolio){
-//        this.portfolio = portfolio;
-//    }
-
-    public Stock (){}
-    public Stock (double price, String ticker){
-        this.ticker = ticker;
-        this.price = price;
-    }
-}
-
-
-
-
-
- */

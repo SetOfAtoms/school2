@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Add new bond</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 <body>
-<h1>Add new bond to the portfolio</h1>
-<div>
+<h1 style="">Add new bond to the portfolio</h1>
+<div class="addnewb">
     <form th:object="${bond}" th:action="@{savebond}" action="#" method="post">
-        <label for="initialPrice">Initial price</label>
-        <input type="number" id="initialPrice" th:field="*{initialPrice}" />
+        <label for="initialPrice" >Initial price</label>
+        <input type="number"id="initialPrice" th:field="*{initialPrice}" />
         <label for="issuer">Issuer</label>
         <input type="text" id="issuer" th:field="*{issuer}" />
-        <input type="submit" value="Save"/>
+        <input type="submit" class="button2" value="Save"/>
     </form>
 </div>
+<p style="position:absolute;top:25%;font-size:16px;color:#212121;">Initial price should be 100 or 1000</p>
 </body>
 </html>

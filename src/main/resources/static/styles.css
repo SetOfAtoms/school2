@@ -1,0 +1,139 @@
+
+body{
+font-family: sans-serif;
+background-color:#B3E5FC;
+}
+
+h1{
+position:absolute;
+top:5%;
+left:45%;
+color:#212121;
+font-size:30px;
+}
+
+.header{
+align:center;
+text-align: center;
+font-size:18px;
+color:#212121;
+}
+
+.balance{
+position:absolute;
+left:80%;
+top:8%;
+color:#BDBDBD;
+}
+.table{
+color:#212121;
+font-size:22px;
+text-align: center;
+
+}
+.dh{
+font-size:18px;
+}
+.ticker{
+
+}
+.stocks{
+left:14%;
+top: 20%;
+position: absolute;
+
+}
+pstocks{
+position:absolute;
+top:50%;
+}
+pbonds{
+position:absolute;
+top:50%;
+}
+btn.btn-primary{
+position:fixed;
+left:600px;
+}
+.bonds{
+top: 20%;
+position: absolute;
+left:50%;
+
+}
+
+.JSON{
+font-size:15px;
+position: absolute;
+top:95%;
+left:42%;
+text-align: center;
+}
+.addnewb{
+position: absolute;
+top: 20%;
+font-size:20px;
+color:#212121;
+}
+.addnews{
+position: absolute;
+top: 20%;
+font-size:20px;
+color:#212121;
+}
+.button {
+  background-color: #FFC107;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+.alert{
+color:red;
+}
+.button2 {
+  background-color: #0288D1;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.loginform{
+ position: absolute;
+   top: 42%;
+   left: 42%;
+}
+.label{
+color:#212121;
+font-size:26px;
+}
+.signupform{
+ position: absolute;
+   top: 42%;
+   left: 42%;
+}
+.chart{
+margin-top:220px;
+}
+.history{
+background-color:#FFF;
+}
+.tickerName{
+align:center;
+text-align:center;
+}
